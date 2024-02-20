@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # A post has a title, author, and body.
 
@@ -10,4 +11,5 @@ class Post(models.Model):
     def __str__(self) -> str:
         return self.title
     
-    
+    def get_absolute_url(self):
+        return reverse('post_details', args=[str(self.id)])
